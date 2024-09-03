@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소나무정보기술</title>
+
+    <script src="resources/js/jquery-3.7.1.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="header"></div>
+
+  <div id="wrapper" class="recent-main">
+	  <div id="sidebar"></div>
+      
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- <!-- Breadcrumbs 2019-11-05 요청으로 메뉴 삭제
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">사용자관리</li>
+        </ol> -->
+        
+        <!-- DataTables Example -->
+        <div class="card mb-3" style="border:none;">
+          <div class="card-header">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M19 7H24V9H19V7ZM17 12H24V14H17V12ZM20 17H24V19H20V17ZM2 22C2 17.5817 5.58172 14 10 14C14.4183 14 18 17.5817 18 22H16C16 18.6863 13.3137 16 10 16C6.68629 16 4 18.6863 4 22H2ZM10 13C6.685 13 4 10.315 4 7C4 3.685 6.685 1 10 1C13.315 1 16 3.685 16 7C16 10.315 13.315 13 10 13ZM10 11C12.21 11 14 9.21 14 7C14 4.79 12.21 3 10 3C7.79 3 6 4.79 6 7C6 9.21 7.79 11 10 11Z"></path></svg>
+            <p>사용자 관리</p>
+          </div>
+          <h5 class="inner-subt">검색</h5>
+          <div class="card-body">
+          	<div class="ft-wrap flex space-between">
+	          <div class="flex">
+	          	<label class="ft-label">검색내용</label>
+	          	<input type="search" class="form-control form-control-sm" id="dtMesu_search" style="width:150px;display:inline">
+	          </div>
+	          <div class="flex">
+	          	<button class="common-btn plus" onclick="$('#ModalDelete').css('display','none');clearModal();showEditModal();">
+	          		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 14.252V16.3414C13.3744 16.1203 12.7013 16 12 16C8.68629 16 6 18.6863 6 22H4C4 17.5817 7.58172 14 12 14C12.6906 14 13.3608 14.0875 14 14.252ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM18 17V14H20V17H23V19H20V22H18V19H15V17H18Z"></path></svg>
+	          		추가
+	          	</button>
+	          	<button class="common-btn plus" onclick="userChgN();">
+	          		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="rgba(255,255,255,1)"><path d="M8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7ZM12 1C8.68629 1 6 3.68629 6 7C6 10.3137 8.68629 13 12 13C15.3137 13 18 10.3137 18 7C18 3.68629 15.3137 1 12 1ZM15 18C15 16.3431 16.3431 15 18 15C18.4631 15 18.9018 15.105 19.2934 15.2924L15.2924 19.2934C15.105 18.9018 15 18.4631 15 18ZM16.7066 20.7076L20.7076 16.7066C20.895 17.0982 21 17.5369 21 18C21 19.6569 19.6569 21 18 21C17.5369 21 17.0982 20.895 16.7066 20.7076ZM18 13C15.2386 13 13 15.2386 13 18C13 20.7614 15.2386 23 18 23C20.7614 23 23 20.7614 23 18C23 15.2386 20.7614 13 18 13ZM12 14C12.0843 14 12.1683 14.0013 12.252 14.0039C11.8236 14.6189 11.4914 15.3059 11.2772 16.0431C8.30431 16.4 6 18.9309 6 22H4C4 17.5817 7.58172 14 12 14Z"></path></svg>
+	          		비활성
+	          	</button>
+	          </div>
+	         </div>
+                 
+            <div class="table-responsive">
+              <div id="dtMesu_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dtMesu_length"><label>페이지당 <select name="dtMesu_length" aria-controls="dtMesu" class="custom-select custom-select-sm form-control form-control-sm"><option value="30">30</option><option value="50">50</option><option value="70">70</option></select>개씩 보기</label></div></div><div class="col-sm-12 col-md-6"><div id="dtMesu_filter" class="dataTables_filter" style="display: none;"><label><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dtMesu"></label></div></div></div><div class="row"><div class="col-sm-12"><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 2227px; padding-right: 17px;"><table class="table table-bordered no-footer dataTable" width="90%" cellspacing="0" style="margin-left: 0px; width: 2227px;" role="grid" aria-describedby="dtMesu_info"><thead id="dtHeader">
+                  <tr role="row"><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="소속: activate to sort column ascending" style="width: 117px;">소속</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="지점: activate to sort column ascending" style="width: 156px;">지점</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="팀: activate to sort column ascending" style="width: 117px;">팀</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="직급: activate to sort column ascending" style="width: 117px;">직급</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="아이디: activate to sort column ascending" style="width: 216px;">아이디</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="성명: activate to sort column ascending" style="width: 216px;">성명</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="휴대폰: activate to sort column ascending" style="width: 216px;">휴대폰</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="직책: activate to sort column ascending" style="width: 166px;">직책</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="경로: activate to sort column ascending" style="width: 166px;">경로</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="최종수정자: activate to sort column ascending" style="width: 117px;">최종수정자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="재직구분: activate to sort column ascending" style="width: 117px;">재직구분</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="비활성구분: activate to sort column ascending" style="width: 117px;">비활성구분</th><th class="sorting_disabled" tabindex="0" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="비활성일자: activate to sort column ascending" style="width: 167px;">비활성일자</th></tr>
+                </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; height: 77vh; width: 100%;"><table class="table table-bordered no-footer dataTable" id="dtMesu" width="90%" cellspacing="0" style="width: 100%;" role="grid" aria-describedby="dtMesu_info"><thead id="dtHeader">
+                  <tr role="row" style="height: 0px;"><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="소속: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">소속</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="지점: activate to sort column ascending" style="width: 156px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">지점</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="팀: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">팀</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="직급: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">직급</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="아이디: activate to sort column ascending" style="width: 216px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">아이디</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="성명: activate to sort column ascending" style="width: 216px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">성명</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="휴대폰: activate to sort column ascending" style="width: 216px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">휴대폰</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="직책: activate to sort column ascending" style="width: 166px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">직책</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="경로: activate to sort column ascending" style="width: 166px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">경로</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="최종수정자: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">최종수정자</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="재직구분: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">재직구분</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="비활성구분: activate to sort column ascending" style="width: 117px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">비활성구분</div></th><th class="sorting_disabled" aria-controls="dtMesu" rowspan="1" colspan="1" aria-label="비활성일자: activate to sort column ascending" style="width: 167px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">비활성일자</div></th></tr>
+                </thead>
+                
+              <tbody><tr role="row" class="odd"><td>다원</td><td>본부</td><td></td><td>대표이사</td><td>21810045</td><td>정세진</td><td>010-8834-4697</td><td>대표</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>본부</td><td></td><td>이사</td><td>21808006</td><td>이윤선</td><td>010-6500-3307</td><td>본부장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>본부</td><td></td><td>과장</td><td>21807130</td><td>박은숙</td><td>010-8772-0844</td><td>총무</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>본부</td><td></td><td>대리</td><td>21810272</td><td>김현정</td><td>010-2747-7924</td><td>총무</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21909030</td><td>박금대</td><td>010-7133-0436</td><td>지점장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21811108</td><td>최민성</td><td>010-5051-8671</td><td>지점장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>김해지점</td><td>영업팀</td><td>FC</td><td>21912057</td><td>박선희</td><td>010-2309-6462</td><td>지점장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>대구지점</td><td>영업팀</td><td>FC</td><td>21810050</td><td>서명순</td><td>010-8850-4001</td><td>지점장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>서울지점</td><td>영업팀</td><td>FC</td><td>21811018</td><td>김정은</td><td>010-5805-7201</td><td>지점장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21910113</td><td>김승호</td><td>010-7919-6910</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>22001008</td><td>남영주</td><td>010-3189-8676</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21905188</td><td>김병수</td><td>010-6206-2608</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21912159</td><td>허민숙</td><td>010-4810-9688</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21807178</td><td>이화진</td><td>010-6566-8230</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21903121</td><td>최광선</td><td>010-4475-6188</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21904150</td><td>권순원</td><td>010-4101-5065</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21905015</td><td>황천연</td><td>010-9357-3164</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21905073</td><td>우현준</td><td>010-5941-4832</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>21905113</td><td>정동주</td><td>010-2093-7070</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>부산지점</td><td>영업팀</td><td>FC</td><td>22002151</td><td>최종현</td><td>010-3513-1621</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>대구지점</td><td>영업팀</td><td>FC</td><td>21809136</td><td>방동혁</td><td>010-6597-0222</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>대구지점</td><td>영업팀</td><td>FC</td><td>21810049</td><td>이동순</td><td>010-5599-8355</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>서울지점</td><td>영업팀</td><td>FC</td><td>21903209</td><td>서정욱</td><td>010-5691-1517</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td>다원</td><td>서울지점</td><td>영업팀</td><td>FC</td><td>21903220</td><td>최서인</td><td>010-7922-1030</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>서울지점</td><td>영업팀</td><td>FC</td><td>21911027</td><td>장현주</td><td>010-6357-2623</td><td>팀장</td><td>다원</td><td></td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="even"><td></td><td></td><td></td><td></td><td>admin</td><td>관리자</td><td></td><td>팀원</td><td>다원</td><td>관리자</td><td>Y</td><td>N</td><td></td></tr><tr role="row" class="odd"><td>다원</td><td>본부</td><td></td><td>FC</td><td>TEST</td><td>TEST</td><td></td><td>팀원</td><td>다원</td><td></td><td></td><td>N</td><td>Y</td></tr><tr role="row" class="even"><td></td><td></td><td></td><td></td><td>test1</td><td>ttt</td><td>009</td><td>대표</td><td>기타</td><td>관리자</td><td>Y</td><td>N</td><td></td></tr></tbody></table></div></div></div></div><div class="row"><div class="col-sm-12 col-md-5"></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dtMesu_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dtMesu_previous"><a href="#" aria-controls="dtMesu" data-dt-idx="0" tabindex="0" class="page-link">이전</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dtMesu" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="dtMesu_next"><a href="#" aria-controls="dtMesu" data-dt-idx="2" tabindex="0" class="page-link">다음</a></li></ul></div></div></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+  </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        // sidebar
+        $('#sidebar').load('/include/sidebar.html');
+
+        // header
+        $('#header').load('/include/header.html');
+    })
+
+    window.onload = function(){
+      const navItem = document.querySelectorAll('.sidebar .nav-item');
+          let pathName = window.location.pathname;
+          
+          console.log(navItem);
+
+          if(pathName.includes('clientmgt') == true) {
+                navItem[0].classList.add('on');	
+          } else if(pathName.includes('consultingmgt') == true) {
+              navItem[1].classList.add('on');
+          } else if(pathName.includes('IndicateChrg') == true) {
+              navItem[2].classList.add('on');
+          } else if(pathName.includes('eventmgt') == true) {
+              navItem[3].classList.add('on');
+          } else if(pathName.includes('eventlist') == true) {
+              navItem[4].classList.add('on');
+          } else if(pathName.includes('clientlist') == true) {
+              navItem[5].classList.add('on');
+          } else if(pathName.includes('chnperformance') == true) {
+              navItem[6].classList.add('on');
+          } else if(pathName.includes('annualperformance') == true) {
+              navItem[7].classList.add('on');
+          } else if(pathName.includes('refmgt') == true) {
+              navItem[8].classList.add('on');
+          } else if(pathName.includes('usermgt') == true) {
+              navItem[9].classList.add('on');
+          } else if(pathName.includes('gwonhanmgt') == true) {
+              navItem[10].classList.add('on');
+          } else if(pathName.includes('loginChk') == true) {
+              document.getElementById('wrapper').classList.add('recent-main');
+          }
+    }
+</script>

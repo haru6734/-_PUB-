@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소나무정보기술</title>
+
+    <script src="resources/js/jquery-3.7.1.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="header"></div>
+
+  <div id="wrapper" class="recent-main">
+	  <div id="sidebar"></div>
+      
+    <div id="content-wrapper">
+
+      <!-- /.container-fluid(Client Grid) Start -->
+        <div class="container-fluid">
+  
+          
+          
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M4 15V8.5C4 6.01472 6.01472 4 8.5 4C10.9853 4 13 6.01472 13 8.5V15.5C13 16.8807 14.1193 18 15.5 18C16.8807 18 18 16.8807 18 15.5V8.82929C16.8348 8.41746 16 7.30622 16 6C16 4.34315 17.3431 3 19 3C20.6569 3 22 4.34315 22 6C22 7.30622 21.1652 8.41746 20 8.82929V15.5C20 17.9853 17.9853 20 15.5 20C13.0147 20 11 17.9853 11 15.5V8.5C11 7.11929 9.88071 6 8.5 6C7.11929 6 6 7.11929 6 8.5V15H9L5 20L1 15H4Z"></path></svg>
+              <p>경로별 실적현황</p>
+            </div>
+            <h5 class="inner-subt">검색</h5>
+            <div class="card-body">
+            
+              <div class="ft-wrap flex space-between">
+                <div class="flex">
+                  <label class="ft-label">기준일자</label>
+                  <div class="flex">
+                    <input type="date" id="ymdFrom" class="form-control" style="height:32px;margin-left:5px;">
+                    ~
+                    <input type="date" id="ymdTo" class="form-control" style="height:32px;margin-left:5px;">
+                  </div>
+                 <button class="common-btn flex grd-bg mr-24" onclick="clickRetr();" style="position: relative;">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#1ad372"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                  조회
+            </button>
+                </div>
+                <div id="box1" style="float:right; display: inline-block;">
+                  
+                <button class="dt-button buttons-excel buttons-html5 right plus myExcelExportBtn" tabindex="0" aria-controls="dtPerformance" type="button"><span>엑셀 내보내기</span></button></div>
+              </div>
+              <div class="table-responsive" style="font-size: 13px">
+                <div id="dtPerformance_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer bx-bd"><div class="dt-buttons"> </div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden;position: relative;border: 0px;width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box;width: 2000.81px;padding-right: 0px;"><table class="table table-bordered no-footer dataTable" width="100%" style="margin-left: 0px; width: 2000.81px;" role="grid" aria-describedby="dtPerformance_info"><thead id="dtHeader">
+                    <tr role="row">
+                    </tr><tr role="row"><th class="sorting_asc sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-sort="ascending" aria-label="구분: activate to sort column descending" style="width: 246.688px;">구분</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="롯데홈쇼핑: activate to sort column ascending" style="width: 268.688px;">롯데홈쇼핑</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ: activate to sort column ascending" style="width: 268.688px;">SJ</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ-유전자: activate to sort column ascending" style="width: 268.688px;">SJ-유전자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="다원: activate to sort column ascending" style="width: 268.688px;">다원</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="기타: activate to sort column ascending" style="width: 268.688px;">기타</th><th class="sorting_disabled" tabindex="0" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="합계: activate to sort column ascending" style="width: 268.688px;">합계</th></tr>
+                  </thead></table></div></div><div class="dataTables_scrollBody" style="width: 2000px; position: relative;overflow: auto;height: 78vh;"><table class="table table-bordered no-footer dataTable" id="dtPerformance" width="100%" style="width: 100%;" role="grid" aria-describedby="dtPerformance_info"><thead id="dtHeader">
+                    <tr role="row" style="height: 0px;">
+                    </tr><tr role="row" style="height: 0px;"><th class="sorting_asc sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-sort="ascending" aria-label="구분: activate to sort column descending" style="width: 246.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">구분</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="롯데홈쇼핑: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">롯데홈쇼핑</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">SJ</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ-유전자: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">SJ-유전자</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="다원: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">다원</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="기타: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">기타</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="합계: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">합계</div></th></tr>
+                  </thead>
+                  
+                <tbody><tr role="row" class="odd"><td>신규고객등록</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>상담등록</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>담당지정</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>이벤트-처리</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>이벤트-완료</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>이벤트-미체결</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>이벤트-반품</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div></div></div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <!-- /.container-fluid(Client Grid) End -->
+  
+  
+  
+  </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        // sidebar
+        $('#sidebar').load('/include/sidebar.html');
+
+        // header
+        $('#header').load('/include/header.html');
+    })
+
+    window.onload = function(){
+      const navItem = document.querySelectorAll('.sidebar .nav-item');
+          let pathName = window.location.pathname;
+          
+          console.log(navItem);
+
+          if(pathName.includes('clientmgt') == true) {
+                navItem[0].classList.add('on');	
+          } else if(pathName.includes('consultingmgt') == true) {
+              navItem[1].classList.add('on');
+          } else if(pathName.includes('IndicateChrg') == true) {
+              navItem[2].classList.add('on');
+          } else if(pathName.includes('eventmgt') == true) {
+              navItem[3].classList.add('on');
+          } else if(pathName.includes('eventlist') == true) {
+              navItem[4].classList.add('on');
+          } else if(pathName.includes('clientlist') == true) {
+              navItem[5].classList.add('on');
+          } else if(pathName.includes('chnperformance') == true) {
+              navItem[6].classList.add('on');
+          } else if(pathName.includes('annualperformance') == true) {
+              navItem[7].classList.add('on');
+          } else if(pathName.includes('refmgt') == true) {
+              navItem[8].classList.add('on');
+          } else if(pathName.includes('usermgt') == true) {
+              navItem[9].classList.add('on');
+          } else if(pathName.includes('gwonhanmgt') == true) {
+              navItem[10].classList.add('on');
+          } else if(pathName.includes('loginChk') == true) {
+              document.getElementById('wrapper').classList.add('recent-main');
+          }
+    }
+</script>

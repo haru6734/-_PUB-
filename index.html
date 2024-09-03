@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>소나무정보기술</title>
+
+      <!-- <script src="resources/js/jquery-3.7.1.js"></script> -->
+      <script src="../resources/vendor/jquery/jquery.min.js"></script>
+  </head>
+
+  <body id="page-top">
+      <div id="header"></div>
+
+    <div id="wrapper" class="recent-main">
+      <div id="sidebar"></div>
+      
+    <div>
+
+  </body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        // header
+        $('#header').load('/include/header.html');
+        // sidebar
+        $('#sidebar').load('/include/sidebar.html');
+    })
+
+    window.onload = function(){
+      const navItem = document.querySelectorAll('.sidebar .nav-item');
+          let pathName = window.location.pathname;
+          
+          console.log(navItem);
+
+          if(pathName.includes('clientmgt') == true) {
+                navItem[0].classList.add('on');	
+          } else if(pathName.includes('consultingmgt') == true) {
+              navItem[1].classList.add('on');
+          } else if(pathName.includes('IndicateChrg') == true) {
+              navItem[2].classList.add('on');
+          } else if(pathName.includes('eventmgt') == true) {
+              navItem[3].classList.add('on');
+          } else if(pathName.includes('eventlist') == true) {
+              navItem[4].classList.add('on');
+          } else if(pathName.includes('clientlist') == true) {
+              navItem[5].classList.add('on');
+          } else if(pathName.includes('chnperformance') == true) {
+              navItem[6].classList.add('on');
+          } else if(pathName.includes('annualperformance') == true) {
+              navItem[7].classList.add('on');
+          } else if(pathName.includes('refmgt') == true) {
+              navItem[8].classList.add('on');
+          } else if(pathName.includes('usermgt') == true) {
+              navItem[9].classList.add('on');
+          } else if(pathName.includes('gwonhanmgt') == true) {
+              navItem[10].classList.add('on');
+          } else if(pathName.includes('loginChk') == true) {
+              document.getElementById('wrapper').classList.add('recent-main');
+          }
+    }
+    
+    
+</script>

@@ -1,0 +1,175 @@
+@media ( max-width: 1200px) {
+
+    .sidebar .nav-item.on .nav-link::before {
+        height: 32px !important;
+    }
+
+    #sidebar .navbar-nav { 
+        width: 50px !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        display: block !important;
+        text-align:center  !important;
+        width: 50px !important;
+        gap: 0;
+        padding: 0 !important;
+    }
+
+    #sidebar .sidebar .nav-item .nav-link span {
+        font-size: 0;
+    }
+
+    .ft-wrap { 
+        flex-wrap: wrap;
+    }
+
+    .flex { 
+        flex-wrap: wrap;
+        margin-left: 0 !important; /* html에서 style 제거 */
+    }
+
+    .flex label { 
+        margin-left: 0 !important; /* html에서 style 제거 */
+    }
+
+    .gap-24 {
+        gap: 0px;
+    }
+    
+
+    .card {
+        width: 100% !important;
+    }
+
+    
+    /* .ft-lable > label "진행현황" 제외 html 수정 가능시 바로 적용 */
+    .card .ft-wrap .flex .ft-label label:nth-child(1) { 
+        float: left;
+    }
+    
+    .card .ft-wrap .flex .ft-label label:not(:nth-child(1)) { 
+        flex-wrap: wrap; 
+    }
+}
+
+@media ( max-width: 800px) {
+    .sidebar .nav-item.on .nav-link::before {
+        height: 32px !important;
+    }
+
+    #sidebar .navbar-nav { 
+        width: 50px !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        padding: 0 !important;
+        width: 50px !important;
+        gap: 24px; 
+    }
+
+    #sidebar .sidebar .nav-item .nav-link span {
+        font-size: 0;
+    }
+
+
+    .ft-wrap { 
+        flex-wrap: wrap;
+    }
+
+    .flex { 
+        flex-wrap: wrap;
+        margin-left: 0; /* html에서 style 제거 */
+        gap: 0;
+    }
+
+    .flex label { 
+        margin-left: 0; /* html에서 style 제거 */
+        margin-right: 0; /* html에서 style 제거 */
+    }
+
+    .gap-24 {
+        gap: 0px;
+    }
+
+
+    .card {
+        width: 100% !important;
+    }
+    
+    /* .ft-lable > label "진행현황" 제외 html 수정 가능시 바로 적용 */
+
+    .card .ft-wrap .flex .ft-label label:nth-child(1) { 
+        float: left;
+    }
+    
+    .card .ft-wrap .flex .ft-label label:not(:nth-child(1)) { 
+        flex-wrap: wrap; 
+    }
+
+}
+
+
+@media ( max-width: 767px) {
+    .sidebar .nav-item.on .nav-link::before {
+        top: 12px;
+        height: 32px !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        padding: 12px 0 !important;
+    }
+
+}
+
+
+@media ( max-width: 400px) {
+
+    #sidebar .navbar-nav { 
+        width: 50px !important;
+    }
+
+    .sidebar .nav-item .nav-link {
+        padding: 0 !important;
+        width: 50px !important;
+        gap: 24px; 
+    }
+
+    #sidebar .sidebar .nav-item .nav-link span {
+        font-size: 0;
+    }
+
+
+    .ft-wrap { 
+        flex-wrap: wrap;
+    }
+
+    .flex { 
+        flex-wrap: wrap;
+        margin-left: 0; /* html에서 style 제거 */
+    }
+
+    .flex label { 
+        margin-left: 0; /* html에서 style 제거 */
+    }
+
+    .gap-24 {
+        gap: 0px;
+    }
+    
+
+    .card {
+        width: 100% !important;
+    }
+
+    
+    /* .ft-lable > label "진행현황" 제외 html 수정 가능시 바로 적용 */
+    .card .ft-wrap .flex .ft-label label:nth-child(1) { 
+        float: left;
+    }
+    
+    .card .ft-wrap .flex .ft-label label:not(:nth-child(1)) { 
+        flex-wrap: wrap; 
+    }
+
+}

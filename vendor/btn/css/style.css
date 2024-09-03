@@ -1,0 +1,28 @@
+#wrap{}
+#header{}
+#section{}
+#footer{}
+/* body{font-family:'Nanum Gothic' !important} */
+@font-face{font-family: 'Nanum Gothic';
+           src: url(font/NanumSquare_acL.ttf) format("ttf")
+
+}
+
+/*********************header****************************/
+
+
+/*********************section****************************/
+.left{width:120px;height:35px;border:1px solid #555;
+                  border-radius:3px;text-align:center;background-color:#fff}
+
+.right{width:95px;height:35px;background-color:#8d8e8f;
+                  border-radius:3px;text-align:center}                  
+
+.search{background-color:#343a40;width:95px;height:35px;
+                  border-radius:3px;text-align:center;border:none}
+
+.right img{margin-right:10px}
+.plus{font-size:15px;color:#fff;border:none
+                           }
+    
+/*********************footer****************************/

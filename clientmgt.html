@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소나무정보기술</title>
+
+    <script src="resources/js/jquery-3.7.1.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="header"></div>
+
+  <div id="wrapper" class="recent-main">
+	  <div id="sidebar"></div>
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+          <div class="card mb-3">
+              <div class="card-header">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="rgba(98,112,105,.35)"><path d="M12 14V16C8.68629 16 6 18.6863 6 22H4C4 17.5817 7.58172 14 12 14ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11ZM14.5946 18.8115C14.5327 18.5511 14.5 18.2794 14.5 18C14.5 17.7207 14.5327 17.449 14.5945 17.1886L13.6029 16.6161L14.6029 14.884L15.5952 15.4569C15.9883 15.0851 16.4676 14.8034 17 14.6449V13.5H19V14.6449C19.5324 14.8034 20.0116 15.0851 20.4047 15.4569L21.3971 14.8839L22.3972 16.616L21.4055 17.1885C21.4673 17.449 21.5 17.7207 21.5 18C21.5 18.2793 21.4673 18.551 21.4055 18.8114L22.3972 19.3839L21.3972 21.116L20.4048 20.543C20.0117 20.9149 19.5325 21.1966 19.0001 21.355V22.5H17.0001V21.3551C16.4677 21.1967 15.9884 20.915 15.5953 20.5431L14.603 21.1161L13.6029 19.384L14.5946 18.8115ZM18 19.5C18.8284 19.5 19.5 18.8284 19.5 18C19.5 17.1716 18.8284 16.5 18 16.5C17.1716 16.5 16.5 17.1716 16.5 18C16.5 18.8284 17.1716 19.5 18 19.5Z"></path></svg>
+                  <p>고객 관리</p>
+                </div>
+         
+          <h5 class="inner-subt">검색</h5>
+          
+          <div class="flex justi-between ft-wrap">
+            <div id="dtClient_serchBox" class="flex" style="margin-bottom:5px;"><select id="select_dtClient" class="form-control form-control-sm" style="margin-top:3px;margin-left : 5px;margin-right : 5px; width : 75pt; height:23pt;float:left;"><option value="0">고객번호</option><option value="1">구분</option><option value="2">고객명</option><option value="3">연락처</option><option value="4">지역</option><option value="5">상품</option></select>
+                <input type="search" class="form-control form-control-sm" id="dtClient_search" style="width:150px;" placeholder="검색어 입력...">
+              <div id="search2box" class="flex" style="margin-left: 12px;">
+                    <label style="margin-top: 10px;margin-left: 10px;">가입일자</label>
+                    <input type="month" class="form-control form-control-sm" id="pDate" style="width: 150px;margin-top: -30px;margin-left: 60px;" disabled="false">
+                    <button class="common-btn flex grd-bg" onclick="getClientListSearch();" style="position: relative;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#1ad372"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                        조회
+                  </button>
+               </div>
+            </div>
+            <div class="flex" style="">
+                <button class="common-btn to_table" onclick="goPopup();">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="rgba(26,211,114,1)"><path d="M2.85858 2.87732L15.4293 1.0815C15.7027 1.04245 15.9559 1.2324 15.995 1.50577C15.9983 1.52919 16 1.55282 16 1.57648V22.4235C16 22.6996 15.7761 22.9235 15.5 22.9235C15.4763 22.9235 15.4527 22.9218 15.4293 22.9184L2.85858 21.1226C2.36593 21.0522 2 20.6303 2 20.1327V3.86727C2 3.36962 2.36593 2.9477 2.85858 2.87732ZM17 2.99997H21C21.5523 2.99997 22 3.44769 22 3.99997V20C22 20.5523 21.5523 21 21 21H17V2.99997ZM10.2 12L13 7.99997H10.6L9 10.2857L7.39999 7.99997H5L7.8 12L5 16H7.39999L9 13.7143L10.6 16H13L10.2 12Z"></path></svg>
+                    엑셀업로드
+                </button>
+              <button class="common-btn sms" onclick="showSmsModal();">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="rgba(26,211,114,1)"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM20 7.23792L12.0718 14.338L4 7.21594V19H20V7.23792ZM4.51146 5L12.0619 11.662L19.501 5H4.51146Z"></path></svg>
+                  SMS 전송
+              </button>
+            </div>
+            </div>
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <div id="dtClient_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer tb-clientmgt">
+                    <div class="row space-between mi-0">
+                        <div class="flex">
+                            <div class="dataTables_length" id="dtClient_length">
+                                <label>
+                                    <select name="dtClient_length" aria-controls="dtClient" class="custom-select custom-select-sm form-control form-control-sm"><option value="30">30</option><option value="50">50</option><option value="100">100</option></select>
+                                    개씩 보기
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div id="dtClient_filter" class="dataTables_filter">
+                                <label>
+                                    <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dtClient" style="display: none;">
+                                </label>
+                                <button class="common-btn plus" style="margin-right:5px;" onclick="clearModal();showEditModal();">
+                                    <img src="resources/vendor/btn/img/plus.png" alt="">추가
+                                </button>
+                                <button class="common-btn plus" style="margin-right:5px;" onclick="delClientBtn();">
+                                    <img src="resources/vendor/btn/img/minus.png" alt="">삭제
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dataTables_scroll">
+                                <div class="dataTables_scrollHead" style="overflow: visible; position: relative; border: 0px;">
+                                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 5310px; padding-right: 0px;">
+                                        <table class="table table-bordered no-footer dataTable" style="margin-top: 5px; margin-left: 0px; width: 5310px;" role="grid" aria-describedby="dtClient_info">
+                                            <thead id="dtHeader">
+                                                <tr role="row">
+                                                    <th class="sorting_asc sorting_disabled dt-body-center" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending" style="width: 4px;"><input type="checkbox" name="select_all" value="1" id="dtClient_select_all"></th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고객번호: activate to sort column ascending" style="width: 60px;">고객번호</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="구분: activate to sort column ascending" style="width: 75px;">구분</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고객명: activate to sort column ascending" style="width: 100px;">고객명</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연락처: activate to sort column ascending" style="width: 120px;">연락처</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="지역: activate to sort column ascending" style="width: 70px;">지역</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="상세지역: activate to sort column ascending" style="width: 80px;">상세지역</th>
+                                                    <th class="sorting_disabled text-left" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주소: activate to sort column ascending" style="width: 450px;">주소</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주민번호: activate to sort column ascending" style="width: 120px;">주민번호</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="생년월일: activate to sort column ascending" style="width: 75px;">생년월일</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연령대: activate to sort column ascending" style="width: 70px;">연령대</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="성별: activate to sort column ascending" style="width: 70px;">성별</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="보조연락처: activate to sort column ascending" style="width: 150px;">보조연락처</th>
+                                                    <th class="sorting_disabled text-left" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="이메일: activate to sort column ascending" style="width: 180px;">이메일</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="직업: activate to sort column ascending" style="width: 120px;">직업</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고용형태: activate to sort column ascending" style="width: 120px;">고용형태</th>
+                                                    <th class="sorting_disabled text-right" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="소득/매출: activate to sort column ascending" style="width: 100px;">소득/매출</th>
+                                                    <th class="sorting_disabled text-right" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="저축가능액: activate to sort column ascending" style="width: 75px;">저축가능액</th>
+                                                    <th class="sorting_disabled text-right" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="대출현황: activate to sort column ascending" style="width: 100px;">대출현황</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주거형태: activate to sort column ascending" style="width: 120px;">주거형태</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="신용상태: activate to sort column ascending" style="width: 100px;">신용상태</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="자녀나이: activate to sort column ascending" style="width: 75px;">자녀나이</th>
+                                                    <th class="sorting_disabled text-right" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="한달보험료: activate to sort column ascending" style="width: 100px;">한달보험료</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="은행명: activate to sort column ascending" style="width: 75px;">은행명</th>
+                                                    <th class="sorting_disabled text-left" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="계좌번호: activate to sort column ascending" style="width: 200px;">계좌번호</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="업태/종목: activate to sort column ascending" style="width: 100px;">업태/종목</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="설립일: activate to sort column ascending" style="width: 75px;">설립일</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="담당자: activate to sort column ascending" style="width: 150px;">담당자</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="직책: activate to sort column ascending" style="width: 100px;">직책</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연락처: activate to sort column ascending" style="width: 120px;">연락처</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="기타사항: activate to sort column ascending" style="width: 100px;">기타사항</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="경로: activate to sort column ascending" style="width: 120px;">경로</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="통화일자: activate to sort column ascending" style="width: 150px;">통화일자</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="방문일자: activate to sort column ascending" style="width: 150px;">방문일자</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="원수사: activate to sort column ascending" style="width: 150px;">원수사</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="상품: activate to sort column ascending" style="width: 150px;">상품</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="가입일: activate to sort column ascending" style="width: 150px;">가입일</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="건강고지사항: activate to sort column ascending" style="width: 150px;">건강고지사항</th>
+                                                    <th class="sorting_disabled" tabindex="0" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="첨부파일: activate to sort column ascending" style="width: 150px;">첨부파일</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%; height: 81vh;">
+                                    <table class="table table-bordered no-footer dataTable" id="dtClient" style="margin-top: 5px; width: 5309px;" role="grid" aria-describedby="dtClient_info">
+                                        <thead id="dtHeader">
+                                            <tr role="row" style="height: 0px;">
+                                                <th class="sorting_asc sorting_disabled dt-body-center" aria-controls="dtClient" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending" style="width: 4px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;"><input type="checkbox" name="select_all" value="1" id="dtClient_select_all"></div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고객번호: activate to sort column ascending" style="width: 60px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">고객번호</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="구분: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">구분</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고객명: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">고객명</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연락처: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">연락처</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="지역: activate to sort column ascending" style="width: 70px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">지역</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="상세지역: activate to sort column ascending" style="width: 80px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">상세지역</div></th><th class="sorting_disabled text-left" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주소: activate to sort column ascending" style="width: 450px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">주소</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주민번호: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">주민번호</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="생년월일: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">생년월일</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연령대: activate to sort column ascending" style="width: 70px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">연령대</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="성별: activate to sort column ascending" style="width: 70px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">성별</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="보조연락처: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">보조연락처</div></th><th class="sorting_disabled text-left" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="이메일: activate to sort column ascending" style="width: 180px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">이메일</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="직업: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">직업</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="고용형태: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">고용형태</div></th><th class="sorting_disabled text-right" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="소득/매출: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">소득/매출</div></th><th class="sorting_disabled text-right" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="저축가능액: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">저축가능액</div></th><th class="sorting_disabled text-right" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="대출현황: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">대출현황</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="주거형태: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">주거형태</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="신용상태: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">신용상태</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="자녀나이: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">자녀나이</div></th><th class="sorting_disabled text-right" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="한달보험료: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">한달보험료</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="은행명: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">은행명</div></th><th class="sorting_disabled text-left" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="계좌번호: activate to sort column ascending" style="width: 200px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">계좌번호</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="업태/종목: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">업태/종목</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="설립일: activate to sort column ascending" style="width: 75px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">설립일</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="담당자: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">담당자</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="직책: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">직책</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="연락처: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">연락처</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="기타사항: activate to sort column ascending" style="width: 100px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">기타사항</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="경로: activate to sort column ascending" style="width: 120px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">경로</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="통화일자: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">통화일자</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="방문일자: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">방문일자</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="원수사: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">원수사</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="상품: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">상품</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="가입일: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">가입일</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="건강고지사항: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">건강고지사항</div></th><th class="sorting_disabled" aria-controls="dtClient" rowspan="1" colspan="1" aria-label="첨부파일: activate to sort column ascending" style="width: 150px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">첨부파일</div></th>
+                                            </tr>
+                                        </thead>
+                  
+                                        <tbody>
+                                            <tr role="row" class="odd">
+                                                <td class=" dt-body-center"><input type="checkbox" name="id[]" value=""></td>
+                                                <td>10</td>
+                                                <td>내부</td>
+                                                <td>관리자</td>
+                                                <td>010-0001-0001</td>
+                                                <td>부산광역시</td>
+                                                <td>동구</td>
+                                                <td class=" text-left">중앙대로 260번길 3-2</td>
+                                                <td>800101-1010001</td>
+                                                <td>1980-01-01</td>
+                                                <td>40대</td>
+                                                <td>남성</td>
+                                                <td>010-0002-0002</td>
+                                                <td class=" text-left">example@pineit.co.kr</td>
+                                                <td>회사원</td>
+                                                <td>계약직</td>
+                                                <td class=" text-right">100</td>
+                                                <td class=" text-right">10</td>
+                                                <td class=" text-right">200</td>
+                                                <td>아파트</td>
+                                                <td>10등급</td>
+                                                <td>1세</td>
+                                                <td class=" text-right">1</td>
+                                                <td>한국은행</td>
+                                                <td class=" text-left">000-000-000000-0</td>
+                                                <td>서비스</td>
+                                                <td>1990-10-10</td>
+                                                <td>담당자</td>
+                                                <td>사원</td>
+                                                <td></td>
+                                                <td>기타사항 없음.</td>
+                                                <td>다원</td>
+                                                <td>1995-10-10</td>
+                                                <td>2011-10-10</td>
+                                                <td>원수사</td>
+                                                <td>상품</td>
+                                                <td>2020-10-10</td>
+                                                <td></td>
+                                                <td><button style="background-color:rgba(255,255,255,0);border:none;" onclick="showFileUpload(10);inputCnoForFile(10)"><img src="resources/img/file.png" style="width: 20px;">(4)</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="dtClient_processing" class="dataTables_processing card" style="display: none; border: none; background-color: rgba(255, 255, 255, 0);">
+                                <img src="resources/img/loading2.gif">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"><div class="col-sm-12 col-md-5"></div>
+                    <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="dtClient_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="dtClient_previous">
+                                    <a href="#" aria-controls="dtClient" data-dt-idx="0" tabindex="0" class="page-link">이전</a>
+                                </li>
+                                <li class="paginate_button page-item active">
+                                    <a href="#" aria-controls="dtClient" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                                </li>
+                                <li class="paginate_button page-item next disabled" id="dtClient_next">
+                                    <a href="#" aria-controls="dtClient" data-dt-idx="2" tabindex="0" class="page-link">다음</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+  <div>
+
+</body>
+</html>
+
+<script>
+
+    window.addEventListener('DOMContentLoaded', function() {
+        // sidebar
+        $('#sidebar').load('/include/sidebar.html');
+
+        // header
+        $('#header').load('/include/header.html');
+
+        document.getElementById("sidebar").onload = function(){
+            const navItem = document.querySelectorAll('.sidebar .nav-item');
+          let pathName = window.location.pathname;
+          
+          console.log(navItem);
+
+          if(pathName.includes('clientmgt') == true) {
+                document.querySelector('.item-clientmgt').classList.add('on');
+                navItem[0].classList.add('on');	
+          } else if(pathName.includes('consultingmgt') == true) {
+                
+              navItem[1].classList.add('on');
+          } else if(pathName.includes('IndicateChrg') == true) {
+              navItem[2].classList.add('on');
+          } else if(pathName.includes('eventmgt') == true) {
+              navItem[3].classList.add('on');
+          } else if(pathName.includes('eventlist') == true) {
+              navItem[4].classList.add('on');
+          } else if(pathName.includes('clientlist') == true) {
+              navItem[5].classList.add('on');
+          } else if(pathName.includes('chnperformance') == true) {
+              navItem[6].classList.add('on');
+          } else if(pathName.includes('annualperformance') == true) {
+              navItem[7].classList.add('on');
+          } else if(pathName.includes('refmgt') == true) {
+              navItem[8].classList.add('on');
+          } else if(pathName.includes('usermgt') == true) {
+              navItem[9].classList.add('on');
+          } else if(pathName.includes('gwonhanmgt') == true) {
+              navItem[10].classList.add('on');
+          } else if(pathName.includes('loginChk') == true) {
+              document.getElementById('wrapper').classList.add('recent-main');
+          }
+        }
+        
+            
+    });
+
+    
+</script>

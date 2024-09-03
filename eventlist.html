@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소나무정보기술</title>
+
+    <script src="resources/js/jquery-3.7.1.js"></script>
+    
+</head>
+
+<body id="page-top">
+    <div id="header"></div>
+
+  <div id="wrapper" class="recent-main">
+	  <div id="sidebar"></div>
+      
+    <div id="content-wrapper">
+	
+      <!-- 상담내역 Grid Start -->
+        <div class="container-fluid">
+    
+          
+          
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M19 22H5C3.34315 22 2 20.6569 2 19V3C2 2.44772 2.44772 2 3 2H17C17.5523 2 18 2.44772 18 3V15H22V19C22 20.6569 20.6569 22 19 22ZM18 17V19C18 19.5523 18.4477 20 19 20C19.5523 20 20 19.5523 20 19V17H18ZM16 20V4H4V19C4 19.5523 4.44772 20 5 20H16ZM6 7H14V9H6V7ZM6 11H14V13H6V11ZM6 15H11V17H6V15Z"></path></svg>
+              <p>이벤트리스트</p>
+            </div>
+            <div id="test"></div>
+            <h5 class="inner-subt">검색</h5>
+            <div class="ft-wrap flex">
+                <div class="flex gap-24">
+                  <label class="ft-label">진행현황</label>
+                 <label><input type="radio" name="chk_Prc_Gb" value="P" checked="Checked" style="margin-top:-0.5px;" class="mr-6">진행</label>&nbsp;&nbsp;&nbsp;
+                  <label><input type="radio" name="chk_Prc_Gb" value="C" style="margin-top:-0.5px;" class="mr-6">완료</label>&nbsp;&nbsp;&nbsp;
+                  <label><input type="radio" name="chk_Prc_Gb" value="A" style="margin-top:-0.5px;" class="mr-6">미체결</label>&nbsp;&nbsp;&nbsp;
+                  <label><input type="radio" name="chk_Prc_Gb" value="B" style="margin-top:-0.5px;" class="mr-6">반품</label>
+                </div>
+                 <div id="my_filter" class="flex ml-auto">
+                   <label class="ft-label">경로</label>
+                <input type="search" class="form-control form-control-sm" id="dtConsulting_search" style="width:150px;display:inline">
+          <button class="common-btn flex grd-bg mr-24" onclick="consultingSearch();" style="position: relative;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="#1ad372"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"></path></svg>
+                조회
+          </button>
+          <!-- <button id="exExportBtn" onclick="exExport()">Export</button> -->
+          <label class="ft-label">담당자</label>
+          <select id="sub_level" class="form-control form-control-sm" style="width: 100px;display: inline-block;float: right;"><option value="100000000">ttt</option><option value="25">장현주</option><option value="24">최서인</option><option value="23">서정욱</option><option value="22">이동순</option><option value="21">방동혁</option><option value="20">최종현</option><option value="19">정동주</option><option value="18">우현준</option><option value="17">황천연</option><option value="16">권순원</option><option value="15">최광선</option><option value="14">이화진</option><option value="13">허민숙</option><option value="12">김병수</option><option value="11">남영주</option><option value="10">김승호</option><option value="9">김정은</option><option value="8">서명순</option><option value="7">박선희</option><option value="6">최민성</option><option value="5">박금대</option><option value="4">김현정</option><option value="3">박은숙</option><option value="2">이윤선</option><option value="1">정세진</option><option value="99999999">TEST</option><option value="">선택</option></select>
+                  
+                </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive" style="font-size: 13px">
+                <div id="dtConsulting_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="dt-buttons"><button class="dt-button buttons-excel buttons-html5 right plus myExcelExportBtn" tabindex="0" aria-controls="dtConsulting" type="button"><span>엑셀 내보내기</span></button> </div><div id="dtConsulting_filter" class="dataTables_filter" style="display: none;"><label><input type="search" class="form-control form-control-sm" placeholder="" aria-controls="dtConsulting"></label></div><div class="dataTables_scroll row mi-0">
+                  <div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;">
+                    <div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 2055px; padding-right: 0px;">
+                      <table class="table table-bordered no-footer dataTable" width="100%" cellspacing="0" style="margin-left: 0px; width: 2055px;" role="grid" aria-describedby="dtConsulting_info">
+                        <thead id="dtHeader">
+                          <tr role="row"><th class="sorting_asc sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-sort="ascending" aria-label="고객번호: activate to sort column descending" style="width: 70px;">고객번호</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="경로: activate to sort column ascending" style="width: 80px;">경로</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="고객명: activate to sort column ascending" style="width: 80px;">고객명</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="연락처: activate to sort column ascending" style="width: 120px;">연락처</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="지역: activate to sort column ascending" style="width: 80px;">지역</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="상세지역: activate to sort column ascending" style="width: 70px;">상세지역</th><th class="sorting_disabled text-left" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="주소: activate to sort column ascending" style="width: 350px;">주소</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="등록일: activate to sort column ascending" style="width: 70px;">등록일</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="등록자: activate to sort column ascending" style="width: 80px;">등록자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="상담번호: activate to sort column ascending" style="width: 80px;">상담번호</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="상담분야: activate to sort column ascending" style="width: 150px;">상담분야</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="상담일자: activate to sort column ascending" style="width: 120px;">상담일자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="방문요청일: activate to sort column ascending" style="width: 70px;">방문요청일</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="상담내용: activate to sort column ascending" style="width: 200px;">상담내용</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="담당자: activate to sort column ascending" style="width: 70px;">담당자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtConsulting" rowspan="1" colspan="1" aria-label="담당지정일: activate to sort column ascending" style="width: 70px;">담당지정일</th></tr>
+                        </thead>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="dataTables_scrollBody" style="position: relative;overflow: auto;width: 100%;height: 78vh;"><table class="table table-bordered no-footer dataTable" id="dtPerformance" width="100%" style="width: 100%;" role="grid" aria-describedby="dtPerformance_info"><thead id="dtHeader">
+                    <tr role="row" style="height: 0px;">
+                    </tr><tr role="row" style="height: 0px;"><th class="sorting_asc sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-sort="ascending" aria-label="구분: activate to sort column descending" style="width: 246.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">구분</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="롯데홈쇼핑: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">롯데홈쇼핑</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">SJ</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="SJ-유전자: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">SJ-유전자</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="다원: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">다원</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="기타: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">기타</div></th><th class="sorting_disabled" aria-controls="dtPerformance" rowspan="1" colspan="1" aria-label="합계: activate to sort column ascending" style="width: 268.688px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">합계</div></th></tr>
+                  </thead>
+                  
+                <tbody><tr role="row" class="odd"><td>신규고객등록</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>상담등록</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>담당지정</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>이벤트-처리</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>이벤트-완료</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="even"><td>이벤트-미체결</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr role="row" class="odd"><td>이벤트-반품</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
+                
+                </div></div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <!-- 상담내역 Grid End -->
+      <!-- 이벤트 Grid Start -->
+        <div class="container-fluid">
+          <!-- DataTables Example -->
+          <div class="card mb-3 mt-1">
+            <h5 class="inner-subt">이벤트리스트</h5>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div id="dtEvent_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12 bx-bd"><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 2000.81px; padding-right: 0px;"><table class="table table-bordered no-footer dataTable" width="100%" cellspacing="0" style="margin-left: 0px; width: 2000.81px;" role="grid" aria-describedby="dtEvent_info"><thead id="dtHeader">
+                    <tr role="row"><th class="sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트번호: activate to sort column ascending" style="width: 96.375px;">이벤트번호</th><th class="sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트: activate to sort column ascending" style="width: 96.375px;">이벤트</th><th class="sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="진행율: activate to sort column ascending" style="width: 96.375px;">진행율</th><th class="sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="담당자: activate to sort column ascending" style="width: 144.625px;">담당자</th><th class="sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트일자: activate to sort column ascending" style="width: 192.844px;">이벤트일자</th><th class="text-left sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트내용: activate to sort column ascending" style="width: 627.047px;">이벤트내용</th><th class="text-left sorting_disabled" tabindex="0" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="To-Do: activate to sort column ascending" style="width: 627.172px;">To-Do</th></tr>
+                  </thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%; height: 38vh;"><table class="table table-bordered no-footer dataTable" id="dtEvent" width="100%" cellspacing="0" style="" role="grid" aria-describedby="dtEvent_info"><thead id="dtHeader">
+                    <tr role="row" style="height: 0px;"><th class="sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트번호: activate to sort column ascending" style="width: 96.375px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">이벤트번호</div></th><th class="sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트: activate to sort column ascending" style="width: 96.375px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">이벤트</div></th><th class="sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="진행율: activate to sort column ascending" style="width: 96.375px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">진행율</div></th><th class="sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="담당자: activate to sort column ascending" style="width: 144.625px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">담당자</div></th><th class="sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트일자: activate to sort column ascending" style="width: 192.844px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">이벤트일자</div></th><th class="text-left sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="이벤트내용: activate to sort column ascending" style="width: 627.047px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">이벤트내용</div></th><th class="text-left sorting_disabled" aria-controls="dtEvent" rowspan="1" colspan="1" aria-label="To-Do: activate to sort column ascending" style="width: 627.172px; padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px;"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">To-Do</div></th></tr>
+                  </thead>
+                  
+                <tbody><tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">조회 결과가 없습니다.</td></tr></tbody></table></div></div></div></div><div class="row"><div class="col-sm-12 col-md-5"></div><div class="col-sm-12 col-md-7"></div></div></div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <!-- 이벤트 Grid End -->
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+        // sidebar
+        $('#sidebar').load('/include/sidebar.html');
+
+        // header
+        $('#header').load('/include/header.html');
+    })
+
+    window.onload = function(){
+      const navItem = document.querySelectorAll('.sidebar .nav-item');
+          let pathName = window.location.pathname;
+          
+          console.log(navItem);
+
+          if(pathName.includes('clientmgt') == true) {
+                navItem[0].classList.add('on');	
+          } else if(pathName.includes('consultingmgt') == true) {
+              navItem[1].classList.add('on');
+          } else if(pathName.includes('IndicateChrg') == true) {
+              navItem[2].classList.add('on');
+          } else if(pathName.includes('eventmgt') == true) {
+              navItem[3].classList.add('on');
+          } else if(pathName.includes('eventlist') == true) {
+              navItem[4].classList.add('on');
+          } else if(pathName.includes('clientlist') == true) {
+              navItem[5].classList.add('on');
+          } else if(pathName.includes('chnperformance') == true) {
+              navItem[6].classList.add('on');
+          } else if(pathName.includes('annualperformance') == true) {
+              navItem[7].classList.add('on');
+          } else if(pathName.includes('refmgt') == true) {
+              navItem[8].classList.add('on');
+          } else if(pathName.includes('usermgt') == true) {
+              navItem[9].classList.add('on');
+          } else if(pathName.includes('gwonhanmgt') == true) {
+              navItem[10].classList.add('on');
+          } else if(pathName.includes('loginChk') == true) {
+              document.getElementById('wrapper').classList.add('recent-main');
+          }
+    }
+</script>
